@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Arya = queen</title>
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      }
+      
+      body {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        min-height: 100vh;
+        background: linear-gradient(45deg, #ff758c, #ff7eb3);
+        overflow: hidden;
+      }
+      
+      .animation-box {
+        position: relative;
+        width: 80%;
+        max-width: 600px;
+        height: 300px;
+        background: rgba(255, 255, 255, 0.1);
+        border-radius: 15px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        backdrop-filter: blur(5px);
+        box-shadow: 0 15px 35px rgba(0, 0, 0, 0.2);
+        overflow: hidden;
+        border: 1px solid rgba(255, 255, 255, 0.2);
+      }
+      
+      .animation-box div {
+        position: absolute;
+        text-align: center;
+        color: white;
+        font-size: 2rem;
+        font-weight: 500;
+        transform: translateY(100px);
+        opacity: 0;
+        width: 80%;
+        text-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
+        animation: animate 12.5s linear infinite;
+      }
+      
+      .first-text {
+        animation-delay: 0s !important;
+      }
+      
+      .second-text {
+        animation-delay: 2.5s !important;
+      }
+      
+      .third-text {
+        animation-delay: 5s !important;
+      }
+      
+      .fourth-text {
+        animation-delay: 7.5s !important;
+      }
+      
+      .fifth-text {
+        animation-delay: 10s !important;
+      }
+      
+      @keyframes animate {
+        0% {
+          transform: translateY(100px);
+          opacity: 0;
+        }
+        5%, 20% {
+          transform: translateY(0);
+          opacity: 1;
+        }
+        25%, 100% {
+          transform: translateY(-100px);
+          opacity: 0;
+        }
+      }
+      
+      /* Heart floating animation */
+      .heart {
+        position: absolute;
+        width: 20px;
+        height: 20px;
+        background: #fff;
+        transform: rotate(45deg);
+        animation: heartFloat 15s linear infinite;
+        opacity: 0.6;
+      }
+      
+      .heart::before,
+      .heart::after {
+        content: '';
+        position: absolute;
+        width: 20px;
+        height: 20px;
+        background: #fff;
+        border-radius: 50%;
+      }
+      
+      .heart::before {
+        top: -10px;
+        left: 0;
+      }
+      
+      .heart::after {
+        top: 0;
+        left: -10px;
+      }
+      
+      @keyframes heartFloat {
+        0% {
+          transform: rotate(45deg) translateY(0) scale(0.8);
+          opacity: 0;
+        }
+        10% {
+          opacity: 0.6;
+        }
+        90% {
+          opacity: 0.6;
+        }
+        100% {
+          transform: rotate(45deg) translateY(-100vh) scale(1.2);
+          opacity: 0;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <section class="animation-box">
+      <div class="first-text">When I'm with you, everything feels right.</div>
+      <div class="second-text">
+        My favorite part of day is whenever I talk with you.
+      </div>
+      <div class="third-text">I love staring at your photos huh.</div>
+      <div class="fourth-text">
+       I just want you to be happy Arya.
+      </div>
+      <div class="fifth-text">
+        Whenever I count my blessings, you are at the top of my list.
+      </div>
+    </section>
+    
+    <script>
+      // Create floating hearts
+      function createHearts() {
+        const body = document.querySelector('body');
+        const heart = document.createElement('div');
+        heart.className = 'heart';
+        
+        heart.style.left = Math.random() * 100 + 'vw';
+        heart.style.animationDuration = Math.random() * 5 + 10 + 's';
+        heart.style.opacity = Math.random() * 0.5 + 0.3;
+        heart.style.fontSize = Math.random() * 10 + 10 + 'px';
+        
+        body.appendChild(heart);
+        
+        setTimeout(() => {
+          heart.remove();
+        }, 15000);
+      }
+      
+      setInterval(createHearts, 500);
+    </script>
+  </body>
+</html>
